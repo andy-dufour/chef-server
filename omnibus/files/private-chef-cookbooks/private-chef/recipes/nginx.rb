@@ -153,7 +153,7 @@ template nginx_config do
   group 'root'
   mode '0644'
   variables(lbconf.merge(chef_lb_configs).merge(:temp_dir => nginx_tempfile_dir))
-  notifies :restart, 'runit_service[nginx]' unless backend_secondary?
+  notifies :restart, 'service[nginx]' unless backend_secondary?
 end
 
 # Write out README.md for addons dir
